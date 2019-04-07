@@ -37,6 +37,7 @@ public class BallSpawner : MonoBehaviour
 
         float radius = ballPrefab.GetComponent<CircleCollider2D>().radius;
 
+        Debug.Log(Physics2D.OverlapCircle(spawnLocation, radius));
         while (Physics2D.OverlapCircle(spawnLocation, radius))
         {
             spawnLocation = new Vector2(
@@ -46,29 +47,4 @@ public class BallSpawner : MonoBehaviour
 
         Instantiate(ballPrefab, spawnLocation, Quaternion.identity);
     }
-
-    // called from ball.cs
-    //public void SpawnNewBall()
-    //{
-    //    spawnLocation = new Vector2(
-    //            Random.Range(ScreenUtils.ScreenLeft, ScreenUtils.ScreenRight),
-    //            Random.Range(0, ScreenUtils.ScreenTop));
-    //    FindNewSpawnPoint();
-    //    if (!spawnLocationOverlaps)
-    //    {
-    //        Instantiate(ballPrefab, spawnLocation, Quaternion.identity);
-    //    }
-    //}
-
-    //private void FindNewSpawnPoint()
-    //{
-    //    spawnLocationOverlaps = Physics2D.OverlapCircle(spawnLocation, ballPrefab.GetComponent<CircleCollider2D>().radius);
-    //    if (spawnLocationOverlaps)
-    //    {
-    //        spawnLocation = new Vector2(
-    //            Random.Range(ScreenUtils.ScreenLeft, ScreenUtils.ScreenRight),
-    //            Random.Range(0, ScreenUtils.ScreenTop));
-    //        FindNewSpawnPoint();
-    //    }
-    //}
 }
